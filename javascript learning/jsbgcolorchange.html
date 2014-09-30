@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<script>
+			colorfunc = function() {
+				myRed = document.getElementById('red').value;
+				myGreen = document.getElementById('green').value;
+				myBlue = document.getElementById('blue').value;
+				if (myRed > 255) {
+					alert("Red value needs to be between 0 and 255, inclusive")
+				}
+				else if (myGreen > 255) {
+					alert("Green value needs to be between 0 and 255, inclusive")
+				}
+				else if (myBlue > 255) {
+					alert("Blue value needs to be between 0 and 255, inclusive")
+				}
+				else {			
+					bgColor = "rgb("+myRed+", "+ myGreen+", "+ myBlue+")";
+					document.body.style.background = bgColor
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<label for="red">Red:</label>
+		<input type="text" value="255" id="red"><br>
+		<label for="green">Green:</label>
+		<input type="text" value="255" id="green"><br>
+		<label for="blue">Blue:</label>
+		<input type="text" value="255" id="blue"><br>
+		<button onclick="colorfunc();" id="doit">Change Color</button>		
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<html>
+
+<body>
+	<script type="text/javascript">
+		x = 11;
+	
+		hellofunc = function() {
+			mySpan = document.createElement('p');
+			mySpan.innerHTML = "Hello World!! " + "Called " + x + " Times.";
+			x += 1
+			mySpan.style.color = "red";
+			mySpan.style.fontSize = x + "pt"
+			document.body.append(mySpan);
+		}
+
+
+	</script>
+	
+	<button onclick="hellofunc();">Click Me</button>
+	
+	<p><span id="hello"></span></p>
+
+</body>
+
+
+</html>
