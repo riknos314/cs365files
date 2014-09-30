@@ -6,19 +6,8 @@
 				myRed = document.getElementById('red').value;
 				myGreen = document.getElementById('green').value;
 				myBlue = document.getElementById('blue').value;
-				if (myRed > 255) {
-					alert("Red value needs to be between 0 and 255, inclusive");
-				}
-				else if (myGreen > 255) {
-					alert("Green value needs to be between 0 and 255, inclusive");
-				}
-				else if (myBlue > 255) {
-					alert("Blue value needs to be between 0 and 255, inclusive");
-				}
-				else {			
-					bgColor = "rgb("+myRed+", "+ myGreen+", "+ myBlue+")";
-					document.body.style.background = bgColor
-				}
+				bgColor = "rgb("+myRed+", "+ myGreen+", "+ myBlue+")";
+				document.body.style.background = bgColor;
 			}
 			checkfunc = function(element) {
 				if (element.value > 255) {
@@ -27,11 +16,12 @@
 				else if (element.value < 0) {
 					alert("Color value needs to be between 0 and 255, inclusive");
 				}
-				/* still in progress
-				else if (elemtent.value == null) {
-					alert("yay");
+				else if (element.value == "") {
+					alert("Please enter a value in each field.");
 				}
-				*/
+			}
+			buildtable = function() {
+
 			}
 		</script>
 	</head>
@@ -42,7 +32,7 @@
 		<input type="text" value="255" onchange="checkfunc(green)" id="green"><br>
 		<label for="blue">Blue:</label>
 		<input type="text" value="255" onchange="checkfunc(blue)" id="blue"><br>
-		<button onclick="colorfunc();" id="doit">Change Color</button>		
+		<button onclick="colorfunc();" id="doit">Change Color</button>
 	</body>
 </html>
 
