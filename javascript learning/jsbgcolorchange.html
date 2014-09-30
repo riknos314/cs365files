@@ -7,28 +7,51 @@
 				myGreen = document.getElementById('green').value;
 				myBlue = document.getElementById('blue').value;
 				if (myRed > 255) {
-					alert("Red value needs to be between 0 and 255, inclusive")
+					alert("Red value needs to be between 0 and 255, inclusive");
 				}
 				else if (myGreen > 255) {
-					alert("Green value needs to be between 0 and 255, inclusive")
+					alert("Green value needs to be between 0 and 255, inclusive");
 				}
 				else if (myBlue > 255) {
-					alert("Blue value needs to be between 0 and 255, inclusive")
+					alert("Blue value needs to be between 0 and 255, inclusive");
 				}
 				else {			
 					bgColor = "rgb("+myRed+", "+ myGreen+", "+ myBlue+")";
 					document.body.style.background = bgColor
 				}
 			}
+			checkfunc = function(element) {
+				if (element.value > 255) {
+					alert("Color value needs to be between 0 and 255, inclusive");
+				}
+				else if (element.value < 0) {
+					alert("Color value needs to be between 0 and 255, inclusive");
+				}
+				/* still in progress
+				else if (elemtent.value == null) {
+					alert("yay");
+				}
+				*/
+			}
 		</script>
 	</head>
 	<body>
 		<label for="red">Red:</label>
-		<input type="text" value="255" id="red"><br>
+		<input type="text" value="255" onchange="checkfunc(red)" id="red"><br>
 		<label for="green">Green:</label>
-		<input type="text" value="255" id="green"><br>
+		<input type="text" value="255" onchange="checkfunc(green)" id="green"><br>
 		<label for="blue">Blue:</label>
-		<input type="text" value="255" id="blue"><br>
+		<input type="text" value="255" onchange="checkfunc(blue)" id="blue"><br>
 		<button onclick="colorfunc();" id="doit">Change Color</button>		
 	</body>
 </html>
+
+<!--
+validate colors
+
+add event to text input
+
+construct table
+	has a row for each set of entered rgb values
+
+-->
