@@ -26,7 +26,7 @@ localSave = function() {
 	res = [];
 	var i;
 	allEntries = document.querySelectorAll('label')
-	
+
 	for(i=0; i < allEntries.length; i++) {
 		if (allEntries[i].className != "done") {
 			res.push(allEntries[i].innerText);
