@@ -1,12 +1,23 @@
-div {
+#things {
 	display: block;
 	border: 3px solid black;
-	width: 95%;
+	width: 90%;
 	height: 700px;
 	overflow: auto;
+	margin-left:auto;
+	margin-right:auto;
+}
+#addstuff {
+	width:200px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
 }
 del {
 	text-decoration: line-through;
+}
+h1 {
+	text-align: center;
 }
 button {
 	display: inline;
