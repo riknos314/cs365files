@@ -7,13 +7,14 @@ newtask = function() {
 
 	checkbox.type = "checkbox";
 	checkbox.value = task;
-	//attempt to make strike on click work
-	checkbox.onclick = function() {
-		this.innerHTML = "<s>"+this.innerHTML+"</s>";
-	};
 
 	label.appendChild(checkbox);
 	label.appendChild(description);
+
+	//attempt to make strike on click work
+	checkbox.onclick = function() {
+		checkbox.label.description = "<del>"+description+"</del>";
+	};
 
 	document.getElementById('things').appendChild(label).appendChild(br);
 }

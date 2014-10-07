@@ -5,11 +5,9 @@ div {
 	height: 700px;
 	overflow: auto;
 }
-
-input[type="checkbox"] {
+del {
+	text-decoration: line-through;
 }
-
-
 button {
 	display: inline;
 }
