@@ -13,12 +13,12 @@
 	margin-right: auto;
 	text-align: center;
 }
-del {
-	text-decoration: line-through;
-}
 h1 {
 	text-align: center;
 }
 button {
 	display: inline;
+}
+.done {
+	text-decoration: line-through;
 }

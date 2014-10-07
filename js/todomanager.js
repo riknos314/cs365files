@@ -13,8 +13,26 @@ newtask = function() {
 
 	//attempt to make strike on click work
 	checkbox.onclick = function() {
-		checkbox.label.description = "<del>"+description+"</del>";
+		this.parentNode.className += " done";
+		localSave();
 	};
 
 	document.getElementById('things').appendChild(label).appendChild(br);
+
+	localSave();
+}
+
+localSave = function() {
+	res = [];
+	var i;
+	allEntries = document.querySelectorAll('label')
+	
+	for(i=0; i < allEntries.length; i++) {
+		if (allEntries[i].className != "done") {
+			res.push(allEntries[i].innerText);
+		}
+	}
+	console.log(res)
+	alert(JSON.stringify(console.log()))
+	localStorage.setItem("todoDatabase",JSON.stringify(res))
 }
