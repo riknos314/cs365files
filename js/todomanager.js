@@ -1,3 +1,39 @@
+
+// New code using model view controller
+task = function(n,p,d,pro) {
+	this.name = n;
+	this.priority = p;
+	this.duedate = d;
+	this.project = pro;
+}
+
+taskList = function() {
+	var tasks = []
+
+	//appends a new task to tasks
+	this.newTask = function(name, pri, due, proj) {
+		new = task(name, pri, due, proj);
+		tasks.push(new);
+	}
+	//removes a tasks from tasks
+	this.rmTask = function() {		
+	}
+	//saves tasks to localstorage
+	this.saveAll = function() {
+	}
+	//restores tasks from localstorage
+	this.restoreAll = function() {
+		
+	}
+}
+
+addTask = function() {
+
+
+}
+
+
+/*  Old way
 newtask = function() {
 	var task = document.getElementById("newtask").value;
 	var label= document.createElement("label");
@@ -57,5 +93,7 @@ loadlocal = function() {
 		label.appendChild(description);
 
 		document.getElementById('things').appendChild(label).appendChild(br);
+		localSave();
 	}
 }
+*/
