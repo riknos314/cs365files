@@ -4,16 +4,18 @@
 		<link rel="stylesheet" href="todomanager.css" />
 		<script type="text/javascript" src="./todomanager.js"></script>
 	</head>
-	<body onload="loadlocal();">
+	<body>
 		<h1>Stuff to do</h1>
 		<div id="addstuff">
-			<input type="text" id="newtask" value="enter a task">
+			<input type="text" id="newtask" value="enter a task"/>
 			<select id="priority">
 					<option value="high">High</option>
 					<option value="medium">Medium</option>
 					<option value="low">Low</option>
 			</select>
-			<button type="button" onclick="newtask();">Add task</button>
+			<input type="text" id="project" value="enter project name"/>
+			<input type="text" id="dueDate" value="enter due date"/>
+			<button type="button" onclick="addTask();">Add task</button>
 		</div>
 		<div id="things">
 		</div>

@@ -31,3 +31,7 @@ button {
 .low {
 	background: lightgreen;
 }
+
+ul{
+	list-style-type: none;
+}

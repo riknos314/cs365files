@@ -1,4 +1,4 @@
-
+TASKS = []
 // New code using model view controller
 task = function(n,p,d,pro) {
 	this.name = n;
@@ -8,27 +8,84 @@ task = function(n,p,d,pro) {
 }
 
 taskList = function() {
-	var tasks = []
-
 	//appends a new task to tasks
 	this.newTask = function(name, pri, due, proj) {
-		new = task(name, pri, due, proj);
-		tasks.push(new);
-	}
+		var thisTask =  new task(name, pri, due, proj);
+		TASKS.push(thisTask);
+
+	};
 	//removes a tasks from tasks
-	this.rmTask = function() {		
-	}
+
+	this.rmTask = function() {
+	};
 	//saves tasks to localstorage
 	this.saveAll = function() {
-	}
+		localStorage.setItem("todoDatabase",JSON.stringify(TASKS));
+	};
 	//restores tasks from localstorage
 	this.restoreAll = function() {
-		
+		var retrieved = localStorage.getItem("todoDatabase");
+		TASKS = JSON.parse(retrieved);
+		displayTask();
+	};
+}
+
+
+createHtmlFrame = function() {
+	var div = document.getElementById("things");
+	div.innerHTML = "";
+	var newList = document.createElement("ul");
+	newList.id = "thingslist";
+	div.appendChild(newList);
+}
+
+
+taskLister = function(item) {
+	var newLi = document.createElement("li");
+	var check = document.createElement("input");
+	var taskText = item;
+	var description = document.createTextNode(taskText.name);
+	var project = document.createTextNode(taskText.project);
+	var due = document.createTextNode(taskText.duedate);
+
+	newLi.className += taskText.priority
+
+
+	check.type = "checkbox";
+	check.value = taskText.name;
+
+	newLi.appendChild(check);
+	newLi.appendChild(description);
+	newLi.appendChild(due);
+	newLi.appendChild(project);
+
+	document.getElementById("thingslist").appendChild(newLi);
+}
+
+displayTask = function() {
+	var tmpTaskList = [];
+	for (var prop in TASKS) {
+			tmpTaskList[prop] = TASKS[prop];
+	}
+
+	createHtmlFrame();
+	for (i=0; i<tmpTaskList.length; i=0) {
+		var item = tmpTaskList.pop();
+		taskLister(item);
 	}
 }
 
 addTask = function() {
+	var name = document.getElementById("newtask").value;
+	var priority = document.getElementById("priority").value;
+	var due = document.getElementById("dueDate").value;
+	var proj = document.getElementById("project").value;
 
+	taskToAdd = new taskList();
+	taskToAdd.newTask(name, priority, due, proj);
+	taskToAdd.SaveAll()
+
+	displayTask();
 
 }
 
