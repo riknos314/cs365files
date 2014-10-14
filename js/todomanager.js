@@ -1,3 +1,22 @@
+
+
+function newTaskModel(task, params) {
+	this._task = task;
+	this._params = params;
+	
+
+}
+
+function ListModel(items) {
+	this._items = items;
+
+	this.itemAdded = new MVCEvent(this);
+	this.itemRemoved = new MVCEvent(this);
+
+
+}
+
+/*  now using better coding practices
 TASKS = []
 // New code using model view controller
 task = function(n,p,d,pro) {
@@ -83,11 +102,12 @@ addTask = function() {
 
 	taskToAdd = new taskList();
 	taskToAdd.newTask(name, priority, due, proj);
-	taskToAdd.SaveAll()
 
 	displayTask();
 
 }
+
+*/
 
 
 /*  Old way
