@@ -1,4 +1,4 @@
-
+/* start of cleaner MVC implementation
 
 function newTaskModel(task, params) {
 	this._task = task;
@@ -16,8 +16,11 @@ function ListModel(items) {
 
 }
 
-/*  now using better coding practices
+*/
+
+
 TASKS = []
+
 // New code using model view controller
 task = function(n,p,d,pro) {
 	this.name = n;
@@ -59,14 +62,14 @@ createHtmlFrame = function() {
 }
 
 
-taskLister = function(item) {
+newLiLister = function(item) {
 	var newLi = document.createElement("li");
 	var check = document.createElement("input");
 	var taskText = item;
 	var description = document.createTextNode(taskText.name);
 	var project = document.createTextNode(taskText.project);
 	var due = document.createTextNode(taskText.duedate);
-
+	
 	newLi.className += taskText.priority
 
 
@@ -76,12 +79,39 @@ taskLister = function(item) {
 	newLi.appendChild(check);
 	newLi.appendChild(description);
 	newLi.appendChild(due);
-	newLi.appendChild(project);
+
+	document.getElementById(taskText.project).appendChild(newLi);
+}
+
+newTaskList = function(item) {
+	var newLi = document.createElement("li");
+	var projList = document.createElement("ul");
+	projList.id = item.project;
+	newLi.appendChild(projList);
 
 	document.getElementById("thingslist").appendChild(newLi);
+
+	newLiLister(item);
+
+}
+
+taskLister = function(item) {
+	
+
+	var project = item.project;
+	for (vari=0; i < projects.length; i++) {
+		if (projects[i] === project) {
+			newLiLister(item);
+			return true;
+		}
+	}
+	newTaskList(item);
+	projects.push(item.project);
+	return false;
 }
 
 displayTask = function() {
+	projects = [];
 	var tmpTaskList = [];
 	for (var prop in TASKS) {
 			tmpTaskList[prop] = TASKS[prop];
@@ -107,7 +137,6 @@ addTask = function() {
 
 }
 
-*/
 
 
 /*  Old way
