@@ -3,7 +3,7 @@
 function newTaskModel(task, params) {
 	this._task = task;
 	this._params = params;
-	
+
 
 }
 
@@ -20,13 +20,26 @@ function ListModel(items) {
 
 
 TASKS = []
+CHECKEDTASKS = []
 
 // New code using model view controller
+Date.prototype.toDateInputValue = (function() {
+    var local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0,10);
+});
+
+setDateToToday = function() {
+	document.getElementById("dueDate").value = new Date().toDateInputValue();
+
+}
+
 task = function(n,p,d,pro) {
 	this.name = n;
 	this.priority = p;
 	this.duedate = d;
 	this.project = pro;
+	this.checked = false;
 }
 
 taskList = function() {
@@ -36,13 +49,17 @@ taskList = function() {
 		TASKS.push(thisTask);
 
 	};
-	//removes a tasks from tasks
-
+	//removes checked tasks from TASKS
 	this.rmTask = function() {
 	};
+
 	//saves tasks to localstorage
 	this.saveAll = function() {
-		localStorage.setItem("todoDatabase",JSON.stringify(TASKS));
+		var toSave = [];
+		for (var prop in TASKS) {
+				toSave[prop] = TASKS[prop];
+		};
+		localStorage.setItem("todoDatabase",JSON.stringify(toSave));
 	};
 	//restores tasks from localstorage
 	this.restoreAll = function() {
@@ -51,7 +68,6 @@ taskList = function() {
 		displayTask();
 	};
 }
-
 
 createHtmlFrame = function() {
 	var div = document.getElementById("things");
@@ -66,10 +82,10 @@ newLiLister = function(item) {
 	var newLi = document.createElement("li");
 	var check = document.createElement("input");
 	var taskText = item;
-	var description = document.createTextNode(taskText.name);
+	var description = document.createTextNode(taskText.name + "  ");
 	var project = document.createTextNode(taskText.project);
-	var due = document.createTextNode(taskText.duedate);
-	
+	var due = document.createTextNode("(due " + taskText.duedate + ")");
+
 	newLi.className += taskText.priority
 
 
@@ -87,6 +103,7 @@ newTaskList = function(item) {
 	var newLi = document.createElement("li");
 	var projList = document.createElement("ul");
 	projList.id = item.project;
+	projList.innerHTML = item.project;
 	newLi.appendChild(projList);
 
 	document.getElementById("thingslist").appendChild(newLi);
@@ -96,7 +113,7 @@ newTaskList = function(item) {
 }
 
 taskLister = function(item) {
-	
+
 
 	var project = item.project;
 	for (vari=0; i < projects.length; i++) {
@@ -134,7 +151,7 @@ addTask = function() {
 	taskToAdd.newTask(name, priority, due, proj);
 
 	displayTask();
-
+	taskList.saveAll();
 }
 
 
